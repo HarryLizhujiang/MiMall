@@ -1,24 +1,4 @@
-# mall
+# mimall
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 使用VUE全家桶仿造小米商城，当然不是一模一样
+## 项目没做完有空在做
