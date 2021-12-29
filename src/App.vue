@@ -14,6 +14,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  @import url('./../public/scss/reset.scss');
 
 </style>
