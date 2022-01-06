@@ -12,7 +12,7 @@ axios.defaults.timeout = "8000";
 //接口错误拦截
 axios.interceptors.response.use(function(response){
   let res = response.data;
-  if(res.status == 0){
+  if(res.status == 200){
     return res.data;
   }else if(res.status == 10){
     window.location.href = '/#/login'

@@ -30,12 +30,14 @@
                     <a href="javascript:;">Select Location</a>
                 </div>
                 <div class="topbar-user">
-                    <a href="javascript:;">登录</a>
+                    <a href="javascript:;" v-if="username">{{username}}</a>
+                    <a href="javascript:;" v-if="!username" @click="login">登录</a>
                     <span class="sep">|</span>
-                    <a href="javascript:;">注册</a>
+                    <a href="javascript:;" v-if="username">我的订单</a>
+                    <a href="javascript:;" v-if="!username">注册</a>
                     <span class="sep">|</span>
                     <a href="javascript:;">消息通知</a>
-                    <a href="javascript:;" class="cart"><span class="icon-cart"></span>购物车</a>
+                    <a href="javascript:;" class="cart" @click="goToCart"><span class="icon-cart"></span>购物车</a>
                 </div>
             </div>
         </div>
@@ -47,31 +49,71 @@
                 <div class="header-menu">
                     <div class="item-menu">
                         <span>Xiaomi手机</span>
-                        <div class="children"></div>
+                        <div class="container1">
+                            <div class="children">
+                                <ul>
+                                    <li class="product" v-for="(item,index) in xiaomilist" :key="index">
+                                        <a :href="'/#/product/'+item.id" target="_blank">
+                                            <div class="pro-img">
+                                                <img :src="item.img_url" alt="">
+                                            </div>
+                                            <div class="pro-name">{{item.product_name}}</div>
+                                            <div class="pro-price">{{item.price}}元起</div>
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="item-menu">
                         <span>Redmi 红米</span>
-                        <div class="children"></div>
+                        <div class="container1">
+                            <div class="children">
+                                <ul>
+                                    <li class="product" v-for="(item,index) in redmilist" :key="index">
+                                        <a :href="'/#/product/'+item.id" target="_blank">
+                                            <div class="pro-img">
+                                                <img :src="item.img_url" alt="">
+                                            </div>
+                                            <div class="pro-name">{{item.product_name}}</div>
+                                            <div class="pro-price">{{item.price}}元起</div>
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="item-menu">
                         <span>电视</span>
-                        <div class="children"></div>
+                        <div class="container1">
+                            <div class="children"></div>
+                        </div>
                     </div>
                     <div class="item-menu">
                         <span>笔记本</span>
-                        <div class="children"></div>
+                        <div class="container1">
+                            <div class="children"></div>
+                        </div>
                     </div>
                     <div class="item-menu">
                         <span>平板</span>
-                        <div class="children"></div>
+                        <div class="container1">
+                            <div class="children"></div>
+                        </div>
                     </div>
                     <div class="item-menu">
                         <span>家电</span>
-                        <div class="children"></div>
+                        <div class="container1">
+                            <div class="children"></div>
+                        </div>
                     </div>
                     <div class="item-menu">
                         <span>路由器</span>
-                        <div class="children"></div>
+                        <div class="container1">
+                            <div class="children"></div>
+                        </div>
                     </div>
                     <div class="item-menu">
                         <span>服务</span>
@@ -83,8 +125,10 @@
                     </div>
                 </div>
                 <div class="header-search">
-                    <div class="search-box"></div>
-                    <div class="search-btn"></div>
+                    <div class="wrapper">
+                        <input type="text" name="keyword">
+                        <a href=""></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -93,7 +137,43 @@
 </template>
 <script>
     export default{
-        name:"nav-header"
+        name:"nav-header",
+        data(){
+            return{
+                username:"jackieli",
+                xiaomilist:[],
+                redmilist:[],
+                tvlist:[],
+            }
+        },
+        mounted(){
+            this.getXiaomilist();
+            this.getRedmilist();
+        },
+        methods:{
+            getXiaomilist(){
+                this.axios.get('/XiaomiPhoneList').then((res)=>{
+                    if(res.length > 6){
+                        this.xiaomilist = res.slice(0,6)
+                    }
+                   
+                })
+            },
+            getRedmilist(){
+                this.axios.get('/RedmiPhoneList').then((res)=>{
+                    if(res.length > 6){
+                        this.redmilist = res.slice(0,6)
+                    }
+                   
+                })
+            },
+            goToCart(){
+                this.$router.push("/cart");
+            },
+            login(){
+                this.$router.push("/login")
+            }
+        }
     }
 </script>
 <style lang="scss">
@@ -175,14 +255,119 @@
                 }
                 .header-menu{
                     display: inline-block;
-                    width: 850px;
                     .item-menu{
                         display: inline-block;
                         color: #333333;
                         font-size: 16px;
                         line-height: 112px;
                         margin-left: 20px;
+                        span{
+                            cursor: pointer;
+                        }
+                        &:hover{
+                            color: #ff6600;
+                            .container1{
+                                height: 220px;
+                                opacity: 1;
+                            }
+                        }
+                        .container1{
+                            position: absolute;
+                            top: 152px;
+                            left: 0px;
+                            right: 0px;
+                            box-shadow: 0px 7px 6px 0px rgba(0,0,0,0.11);
+                            border-top: 1px solid #e5e5e5;
+                            height: 0px;
+                            opacity: 0;
+                            overflow: hidden;
+                            transition: all 0.5s;
+                            .children{
+                                width: 1226px;
+                                margin: auto;
+                                z-index: 10;
+                                background-color: #FFFFFF;
+                                .product{
+                                    position: relative;
+                                    float: left;
+                                    width: 16.6%;
+                                    height: 220px;
+                                    font-size: 12px;
+                                    line-height: 12px;
+                                    text-align: center;
+                                    a{
+                                        display: inline-block;
+                                    }
+                                    img{
+                                        height: 111px;
+                                        width: auto;
+                                        margin-top: 26px;
+                                    }
+                                    .pro-img{
+                                        height: 137px;
+                                    }
+                                    .pro-name{
+                                        font-weight: bold;
+                                        margin-top: 19px;
+                                        margin-bottom: 8px;
+                                        color: #333333;
+                                    }
+                                    .pro-price{
+                                        color: #ff6600;
+                                    }
+                                    &:before{
+                                        content: " ";
+                                        position: absolute;
+                                        top: 28px;
+                                        right: 0px;
+                                        border-left: 1px solid #d7d7d7;
+                                        height: 100px;
+                                        width: 1px;
+                                    }
+                                    &:last-child:before{
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                        
                     }
+                }
+            }
+        }
+        .header-search{
+            width: 315px;
+            .wrapper{
+                height: 50px;
+                border: 1px solid #e0e0e0;
+                display: flex;
+                align-items: center;
+                input{
+                    border: none;
+                    border-right: 1px solid #e0e0e0;
+                    width: 245px;
+                    height: 50px;
+                    padding-left: 14px;
+                }
+                a{
+                    display: inline-block;
+                    width: 52px;
+                    height: 50px;
+                    background: url('/imgs/icon-search.png') no-repeat center; 
+                    background-size: 18px;
+                }
+                a:hover{
+                    background: url('/imgs/icon-search-hover.png') no-repeat center; 
+                    background-size: 18px;
+                    width: 54px;
+
+                    background-color: #ff6600;
+                }
+            }
+            .wrapper:hover{
+                border: 1px solid #b0b0b0;
+                input{
+                    border-right: 1px solid #b0b0b0;
                 }
             }
         }
