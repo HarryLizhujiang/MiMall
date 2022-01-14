@@ -61,7 +61,7 @@
                                             <div class="pro-price">{{item.price}}元起</div>
                                         </a>
                                     </li>
-                                    
+                                    <div class="clearflot"></div>
                                 </ul>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                                             <div class="pro-price">{{item.price}}元起</div>
                                         </a>
                                     </li>
-                                    
+                                    <div class="clearflot"></div>
                                 </ul>
                             </div>
                         </div>
@@ -273,7 +273,7 @@
                         }
                         .container1{
                             position: absolute;
-                            top: 152px;
+                            top: 150px;
                             left: 0px;
                             right: 0px;
                             box-shadow: 0px 7px 6px 0px rgba(0,0,0,0.11);
@@ -281,12 +281,16 @@
                             height: 0px;
                             opacity: 0;
                             overflow: hidden;
+                            z-index: 10;
                             transition: all 0.5s;
                             .children{
                                 width: 1226px;
                                 margin: auto;
                                 z-index: 10;
                                 background-color: #FFFFFF;
+                                .clearflot{
+                                    clear: both;
+                                }
                                 .product{
                                     position: relative;
                                     float: left;

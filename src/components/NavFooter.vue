@@ -5,31 +5,31 @@
                 <ul class="list-service clearfix">
                     <li>
                         <a href="javascript:void(0)">
-                            <span></span>
+                            <span class="icon-setting"></span>
                             预约维修服务
                         </a>
                     </li>
                     <li>
                         <a href="javascript:void(0)">
-                            <span></span>
+                            <span class="icon-7day"></span>
                             7天无理由退货
                         </a>
                     </li>
                     <li>
                         <a href="javascript:void(0)">
-                            <span></span>
+                            <span class="icon-15day"></span>
                             15天免费换货
                         </a>
                     </li>
                     <li>
                         <a href="javascript:void(0)">
-                            <span></span>
+                            <span class="icon-post"></span>
                             满69包邮
                         </a>
                     </li>
                     <li>
                         <a href="javascript:void(0)">
-                            <span></span>
+                            <span class="icon-local"></span>
                             520余家售后网点
                         </a>
                     </li>
@@ -157,10 +157,75 @@
                        a{
                            text-decoration: none;
                            color: #616161;
+                           .icon-setting{
+                               width: 25px;
+                               height: 25px;
+                               display: inline-block;
+                               background: url('/imgs/icon-setting.png') no-repeat center;
+                               background-size: 25px;
+                               vertical-align: -5px;
+                           }
+                           .icon-7day{
+                               width: 25px;
+                               height: 25px;
+                               display: inline-block;
+                               background: url('/imgs/icon-7day.png') no-repeat center;
+                               background-size: 25px;
+                               vertical-align: -5px;
+                           }
+                           .icon-15day{
+                               width: 25px;
+                               height: 25px;
+                               display: inline-block;
+                               background: url('/imgs/icon-15day.png') no-repeat center;
+                               background-size: 25px;
+                               vertical-align: -5px;
+                           }
+                           .icon-post{
+                               width: 25px;
+                               height: 25px;
+                               display: inline-block;
+                               background: url('/imgs/icon-post.png') no-repeat center;
+                               background-size: 25px;
+                               vertical-align: -5px;
+                           }
+                           .icon-local{
+                               width: 25px;
+                               height: 25px;
+                               display: inline-block;
+                               background: url('/imgs/icon-local.png') no-repeat center;
+                               background-size: 25px;
+                               vertical-align: -5px;
+                           }
                        }
                        a:hover{
                            color: #ff6600;
                            transition: color .2s;
+                           .icon-setting{
+                               background: url('/imgs/icon-setting-hover.png') no-repeat center;
+                               background-size: 25px;
+                               transition: all .2s;
+                           }
+                           .icon-7day{
+                               background: url('/imgs/icon-7day-hover.png') no-repeat center;
+                               background-size: 25px;
+                               transition: all .2s;
+                           }
+                           .icon-15day{
+                               background: url('/imgs/icon-15day-hover.png') no-repeat center;
+                               background-size: 25px;
+                               transition: all .2s;
+                           }
+                           .icon-post{
+                               background: url('/imgs/icon-post-hover.png') no-repeat center;
+                               background-size: 25px;
+                               transition: all .2s;
+                           }
+                           .icon-local{
+                               background: url('/imgs/icon-local-hover.png') no-repeat center;
+                               background-size: 25px;
+                               transition: all .2s;
+                           }
                        }
                    }
                    li:first-child{
