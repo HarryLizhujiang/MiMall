@@ -6,7 +6,7 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 Vue.config.productionTip = false
 Vue.prototype.axios = axios
 // 根据前端的跨域方式做调整 
-axios.defaults.baseURL = 'http://rap2api.taobao.org/app/mock/296470'
+axios.defaults.baseURL = 'http://rap2api.taobao.org/app/mock/296470/api'
 // 超时时间
 axios.defaults.timeout = "8000";
 //接口错误拦截

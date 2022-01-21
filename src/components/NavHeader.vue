@@ -88,31 +88,96 @@
                     <div class="item-menu">
                         <span>电视</span>
                         <div class="container1">
-                            <div class="children"></div>
+                            <div class="children">
+                                <ul>
+                                    <li class="product" v-for="(item,index) in tvlist" :key="index">
+                                        <a :href="'/#/product/'+item.id" target="_blank">
+                                            <div class="pro-img">
+                                                <img :src="item.img_url" alt="">
+                                            </div>
+                                            <div class="pro-name">{{item.product_name}}</div>
+                                            <div class="pro-price">{{item.price}}元起</div>
+                                        </a>
+                                    </li>
+                                    <div class="clearflot"></div>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="item-menu">
                         <span>笔记本</span>
                         <div class="container1">
-                            <div class="children"></div>
+                            <div class="children">
+                                <ul>
+                                    <li class="product" v-for="(item,index) in notebookList" :key="index">
+                                        <a :href="'/#/product/'+item.id" target="_blank">
+                                            <div class="pro-img">
+                                                <img :src="item.img_url" alt="">
+                                            </div>
+                                            <div class="pro-name">{{item.product_name}}</div>
+                                            <div class="pro-price">{{item.price}}元起</div>
+                                        </a>
+                                    </li>
+                                    <div class="clearflot"></div>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="item-menu">
                         <span>平板</span>
                         <div class="container1">
-                            <div class="children"></div>
+                            <div class="children">
+                                <ul>
+                                    <li class="product" v-for="(item,index) in tabletpcList" :key="index">
+                                        <a :href="'/#/product/'+item.id" target="_blank">
+                                            <div class="pro-img">
+                                                <img :src="item.img_url" alt="">
+                                            </div>
+                                            <div class="pro-name">{{item.product_name}}</div>
+                                            <div class="pro-price">{{item.price}}元起</div>
+                                        </a>
+                                    </li>
+                                    <div class="clearflot"></div>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="item-menu">
                         <span>家电</span>
                         <div class="container1">
-                            <div class="children"></div>
+                            <div class="children">
+                                <ul>
+                                    <li class="product" v-for="(item,index) in redmilist" :key="index">
+                                        <a :href="'/#/product/'+item.id" target="_blank">
+                                            <div class="pro-img">
+                                                <img :src="item.img_url" alt="">
+                                            </div>
+                                            <div class="pro-name">{{item.product_name}}</div>
+                                            <div class="pro-price">{{item.price}}元起</div>
+                                        </a>
+                                    </li>
+                                    <div class="clearflot"></div>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="item-menu">
                         <span>路由器</span>
                         <div class="container1">
-                            <div class="children"></div>
+                            <div class="children">
+                                <ul>
+                                    <li class="product" v-for="(item,index) in redmilist" :key="index">
+                                        <a :href="'/#/product/'+item.id" target="_blank">
+                                            <div class="pro-img">
+                                                <img :src="item.img_url" alt="">
+                                            </div>
+                                            <div class="pro-name">{{item.product_name}}</div>
+                                            <div class="pro-price">{{item.price}}元起</div>
+                                        </a>
+                                    </li>
+                                    <div class="clearflot"></div>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="item-menu">
@@ -144,11 +209,16 @@
                 xiaomilist:[],
                 redmilist:[],
                 tvlist:[],
+                notebookList:[],
+                tabletpcList:[]
             }
         },
         mounted(){
             this.getXiaomilist();
             this.getRedmilist();
+            this.getTVlist();
+            this.getnotebookList();
+            this.gettabletpc();
         },
         methods:{
             getXiaomilist(){
@@ -163,6 +233,36 @@
                 this.axios.get('/RedmiPhoneList').then((res)=>{
                     if(res.length > 6){
                         this.redmilist = res.slice(0,6)
+                    }
+                   
+                })
+            },
+            getTVlist(){
+                this.axios.get('/TVList').then((res)=>{
+                    if(res.length > 6){
+                        this.tvlist = res.slice(0,6)
+                    }else{
+                        this.tvlist = res
+                    }
+                   
+                })
+            },
+            getnotebookList(){
+                this.axios.get('/notebookList').then((res)=>{
+                    if(res.length > 6){
+                        this.notebookList = res.slice(0,6)
+                    }else{
+                        this.notebookList = res
+                    }
+                   
+                })
+            },
+            gettabletpc(){
+                this.axios.get('/tabletpcList').then((res)=>{
+                    if(res.length > 6){
+                        this.tabletpcList = res.slice(0,6)
+                    }else{
+                        this.tabletpcList = res
                     }
                    
                 })
