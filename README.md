@@ -4,4 +4,4 @@
 
 ### 线上预览
 
-[点我](https://mi.jackiel1.com)
+[点我](http://mi.jackiel1.com)
