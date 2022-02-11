@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import router from './router'
+import store from './store'
 import App from './App.vue'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 Vue.config.productionTip = false
@@ -21,9 +22,8 @@ axios.interceptors.response.use(function(response){
   }
 })
 
-
 new Vue({
   router,
-  VueAwesomeSwiper,
+  store,
   render: h => h(App),
 }).$mount('#app')
