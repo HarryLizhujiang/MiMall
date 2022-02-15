@@ -381,6 +381,7 @@
                             height: 0px;
                             opacity: 0;
                             overflow: hidden;
+                            background-color: #FFFFFF;
                             z-index: 10;
                             transition: all 0.5s;
                             .children{

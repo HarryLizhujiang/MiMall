@@ -3,7 +3,9 @@ import axios from 'axios'
 import router from './router'
 import store from './store'
 import App from './App.vue'
+
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import './util/rem.js'
 Vue.config.productionTip = false
 Vue.prototype.axios = axios
 // 根据前端的跨域方式做调整 
