@@ -48,6 +48,21 @@
                     </div>
                 </div>
             </div>
+            <div class="div4">
+                <video muted loop="loop" width="100%" autoplay="autoplay" src="https://cdn.cnbj1.fds.api.mi-img.com/product-images/xiaomi12proarp71i/video1-1.mp4"></video>
+                <div class="btn-box">
+                    <div @click="play" class="btn-a"></div>
+                </div>
+                
+            </div>
+        </div>
+        <div :class="[ishide?'video-win-hide':'video-win']">
+        </div>
+        <div :class="[ishide?'animate__animated animate__fadeOutUp fixvideo-hide ':'fixvideo animate__animated animate__fadeInDown']">
+            <div class="videoBox">
+                <video id="play" class=""  width="1000px" height="561px" controls="controls"  src="https://cdn.cnbj1.fds.api.mi-img.com/product-images/xiaomi12proarp71i/video1-2.mp4"></video>
+                <div class="clsbtn" @click="closeVideo"></div>
+            </div>
         </div>
     </div>
 </template>
@@ -58,6 +73,22 @@
         components:{
             ProductParam
         },
+        data(){
+            return {
+                ishide:true
+            }
+        },
+        methods:{
+            play(){
+                this.ishide = false
+                document.getElementById('play').load()
+                document.getElementById('play').play()
+            },
+            closeVideo(){
+                this.ishide = true
+                document.getElementById('play').pause()
+            }
+        }
         
     }
 </script>
@@ -193,6 +224,27 @@
                 }
             }
         }
+        .div4{
+            margin-top: 100px;
+            position: relative;
+            .btn-box{
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                right: 0px;
+                bottom: 0px;
+                .btn-a{
+                    width: 60px;
+                    height: 60px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    background-image: url("https://cdn.cnbj1.fds.api.mi-img.com/product-images/xiaomi12proarp71i/365.png");
+                    background-size: 100% 100%;
+                }
+            }
+        }
         .header{
             height: 13rem;
             .img1{
@@ -205,6 +257,48 @@
                 width: 7.22rem;
                 
             }
+        }
+        
+    }
+    .video-win{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        background-color: #000;
+        opacity: .5;
+        transition: opacity .3s;
+        
+    }
+    .video-win-hide{
+        display: none;
+    }
+    .fixvideo-hide{
+        display: none;
+    }
+    .fixvideo{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        .videoBox{
+            width: 1000px;
+            height: 561px;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            .clsbtn{
+                width: 30px;
+                height: 30px;
+                position: absolute;
+                right: 15px;
+                top: 15px;
+                background-image: url('/imgs/close.png');
+                background-size: 100%;
+                cursor: pointer;
+            }
+            
         }
         
     }

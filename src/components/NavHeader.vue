@@ -205,7 +205,7 @@
         name:"nav-header",
         data(){
             return{
-                username:"jackieli",
+                username:this.$store.state.username,
                 xiaomilist:[],
                 redmilist:[],
                 tvlist:[],

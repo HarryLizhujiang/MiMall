@@ -3,7 +3,7 @@
         <div class="nav-bar">
             <div class="container">
                 <div class="pro-title">
-                    Xiaomi 12 Pro
+                    {{product.product_name}}
                 </div>
                 <div class="pro-param">
                     <a href="">概述页</a><span>|</span>
@@ -18,7 +18,7 @@
         <div class="nav-bar nav-bar-hidden" :class="{'is_fixed':isfixed}">
             <div class="container">
                 <div class="pro-title">
-                    Xiaomi 12 Pro
+                    {{product.product_name}}
                 </div>
                 <div class="pro-param">
                     <a href="">概述页</a><span>|</span>
@@ -36,13 +36,22 @@
 <script>
     export default{
         name:'nav-bar',
+        
         data(){
            return{
-               isfixed:false
+               isfixed:false,
+               product:{},
+               id:this.$route.params.id
            }
         },
         mounted(){
             window.addEventListener('scroll',this.initHeight)
+            this.axios.get('/PhoneList').then((res)=>{
+                res.forEach(element => {
+                    if(element.id == this.id)this.product = element
+                });    
+
+            })
         },
         methods:{
             initHeight(){

@@ -3,8 +3,7 @@ import axios from 'axios'
 import router from './router'
 import store from './store'
 import App from './App.vue'
-
-import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'animate.css'
 import './util/rem.js'
 Vue.config.productionTip = false
 Vue.prototype.axios = axios
